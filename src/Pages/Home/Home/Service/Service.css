@@ -1,0 +1,10 @@
+.service{
+    border: 1px solid lightblue;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    width: 361px;
+}
+.service-image{
+    border-radius: 10px;
+}
