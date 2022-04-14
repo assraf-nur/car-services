@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Register.css'
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Register = () => {
+    const [agree, setAgree] = useState(false);
 
     const [
         createUserWithEmailAndPassword,
@@ -27,9 +29,11 @@ const Register = () => {
         // const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
+        const agree = e.target.terms.checked;
 
-        createUserWithEmailAndPassword(email, password);
-
+        if(agree){
+            createUserWithEmailAndPassword(email, password);
+        }
     }
 
     return (
@@ -42,9 +46,12 @@ const Register = () => {
                 <br />
                 <input type="password" name="password" id="" placeholder='password' required/>
                 <br />
-                <input className='btn bg-primary w-25 mx-auto text-white' type="submit" value="Register" />
+                <input disabled={!agree} className='btn bg-primary w-25 mx-auto text-white' type="submit" value="Register" />
+                <input onClick={() => setAgree(!agree)} type="checkbox" name="terms" id="terms" />
+                <label className={agree? 'text-primary' : 'text-danger'} htmlFor="terms">Accepts all conditions</label>
                 <p>Already have an account <Link to='/login' className="text-danger pe-auto text-decoration-none" onClick={navigateLogin} >Log In</Link> </p>
             </form>
+            <SocialLogin></SocialLogin>
         </div>
     );
 };
