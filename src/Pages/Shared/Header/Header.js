@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import { signOut } from "firebase/auth";
+import { Helmet } from "react-helmet-async";
 
 const Header = () => {
 
@@ -19,6 +20,11 @@ const Header = () => {
     <Navbar collapseOnSelect expand="lg" sticky="top" bg="primary" variant="dark">
       <Container>
         <Navbar.Brand as={Link} to="/">
+          <Helmet>
+            <title>
+              Car-Service
+            </title>
+          </Helmet>
           <img href="#home#home" height={30} src={logo} alt="" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

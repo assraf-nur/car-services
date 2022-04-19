@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { Helmet } from "react-helmet-async";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import SocialLogin from "./SocialLogin/SocialLogin";
@@ -28,7 +29,7 @@ const Login = () => {
         signInWithEmailAndPassword(email, password)
     }
 
-    const [sendPasswordResetEmail, sending, error1] = useSendPasswordResetEmail(
+    const [sendPasswordResetEmail] = useSendPasswordResetEmail(
         auth
       );
 
@@ -48,6 +49,9 @@ const Login = () => {
     
   return (
         <Form onSubmit={handleSubmit} className="container w-50 border mt-5 shadow rounded p-5 mx-auto">
+            <Helmet>
+                <title>Login</title>
+            </Helmet>
             <h2 className="text-center text-primary">Please Login</h2>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
