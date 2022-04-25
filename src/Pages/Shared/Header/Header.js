@@ -63,6 +63,9 @@ const Header = () => {
             <Nav.Link as={Link} to='/check'>
               Check
              </Nav.Link>
+            <Nav.Link as={Link} to='/orders'>
+              Orders
+             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
