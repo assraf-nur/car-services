@@ -1,12 +1,10 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import PageTitle from '../Shared/PageTitle/PageTitle';
 
 const About = () => {
     return (
         <div>
-            <Helmet>
-                <title>About</title>
-            </Helmet>
+           <PageTitle title="About"></PageTitle>
             <h2>About US. I will tell you nothing.</h2>
         </div>
     );
